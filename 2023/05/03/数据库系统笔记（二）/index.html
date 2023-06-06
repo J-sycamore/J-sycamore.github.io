@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+
+
+<html lang="ch">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>数据库系统笔记（二） |  梧桐</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-数据库系统笔记（二）"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  数据库系统笔记（二）
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/05/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" class="article-date">
+  <time datetime="2023-05-03T09:52:10.000Z" itemprop="datePublished">2023-05-03</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">4 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h1 id="Entity-Relationship-Model"><a href="#Entity-Relationship-Model" class="headerlink" title="Entity-Relationship Model"></a>Entity-Relationship Model</h1><h2 id="Entity-Sets"><a href="#Entity-Sets" class="headerlink" title="Entity Sets"></a>Entity Sets</h2><p>使用entity和relationship给真实世界建模，entity可以理解为图中的点，relationship为图上的边</p>
+<p>entity可以是具体事物或抽象事物，但必须具有唯一性，entity具有attribute</p>
+<p>entity set是一系列同类型的entity</p>
+<p>entity由一系列attribute表示</p>
+<p>domain是attribute允许的取值</p>
+<p>attribute分类：</p>
+<ul>
+<li>simple and composite</li>
+<li>single-valued and multi-valued</li>
+<li>derived（compared with base or store）</li>
+</ul>
+<p>composite attribute：name（first name, middle initial, last-name）</p>
+<p>component attribute: street number, street name, apartment-number</p>
+<h2 id="Relationship-Sets"><a href="#Relationship-Sets" class="headerlink" title="Relationship Sets"></a>Relationship Sets</h2><p>relationship是两个或多个不同类entity之间的关联</p>
+<p>relationship set是一系列同类型的relationship</p>
+<p>attribute也可以是relationship set的一部分</p>
+<p>degree of relationship set: 参与这个relation set的entity set</p>
+<p>degree&#x3D;2 is <strong>binary</strong></p>
+<p>relationship degree&gt;2 很稀少</p>
+<p>mapping cardinality：relationship set中，一个entity可以与另一类entity相联系的entity数目。其中数目是指最多一个还是多个</p>
+<h2 id="Keys"><a href="#Keys" class="headerlink" title="Keys"></a>Keys</h2><p>super key：一个或多个可以区分每个entity的attribute</p>
+<p>candidate key：最小的super key</p>
+<p>primary key：一个被选中的candidate key</p>
+<p>参与一个relationship set的各entity set的primary key的组合，构成该relationship set的super key</p>
+<p>选择primary key时应考虑各个candidate key的现实意义</p>
+<h2 id="E-R-Diagrams"><a href="#E-R-Diagrams" class="headerlink" title="E-R Diagrams"></a>E-R Diagrams</h2><p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9Yryt0"><img src="https://s1.ax1x.com/2023/05/03/p9Yryt0.png"></a></p>
+<ul>
+<li>矩形为entity set</li>
+<li>菱形为relationship set</li>
+<li>椭圆为attribute</li>
+<li>带下划线为primary key</li>
+<li>线将attribute连接到entity set再连接到relationship set</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9YrB0s"><img src="https://s1.ax1x.com/2023/05/03/p9YrB0s.png"></a></p>
+<p>relationship set can be recursive</p>
+<h3 id="Cardinality-Constraints"><a href="#Cardinality-Constraints" class="headerlink" title="Cardinality Constraints"></a>Cardinality Constraints</h3><p>directed line：one</p>
+<p>undirected line：many</p>
+<h3 id="Participation-of-an-Entity-Set-in-a-Relationship-Set"><a href="#Participation-of-an-Entity-Set-in-a-Relationship-Set" class="headerlink" title="Participation of an Entity Set in a Relationship Set"></a>Participation of an Entity Set in a Relationship Set</h3><p>total participation（double line）：每个entity都在至少一个relationship中</p>
+<p>partial participation：一些entity不在</p>
+<p>Mapping cardinality constraints：限定了实体与发生关联的另一端实体可能关联的数目上限</p>
+<p>Participation：下限</p>
+<p>上下限的替代写法：min..max（*代表无穷大）</p>
+<h3 id="Non-binary-Relationship-and-binary-Relationship"><a href="#Non-binary-Relationship-and-binary-Relationship" class="headerlink" title="Non-binary Relationship and binary Relationship"></a>Non-binary Relationship and binary Relationship</h3><p>创造一个artificial entity set可以将Non-binary relationship转换为binary relationship</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9YIGrt"><img src="https://s1.ax1x.com/2023/05/04/p9YIGrt.png"></a></p>
+<h2 id="Weak-Entity-Sets"><a href="#Weak-Entity-Sets" class="headerlink" title="Weak Entity Sets"></a>Weak Entity Sets</h2><p>定义：没有primary key的entity set，只有discriminator或partial key</p>
+<p>依赖于一个identifying entity set或owner entity set</p>
+<p>必须和一个total，one-to-many relationship set相关，相关的relationship称为identifying relationship</p>
+<p>strong entity set的primary key不会显式地存储在weak entity set中，而是隐含在identifying relationship里</p>
+<h2 id="Extended-E-R-Features"><a href="#Extended-E-R-Features" class="headerlink" title="Extended E-R Features"></a>Extended E-R Features</h2><p>自上而下（Top-down）设计：从一般到特殊，低级entity set继承高级entity set同时增加新的特性。（Specialization）</p>
+<p>自下而上（bottom-up）设计：从特殊到一般。（Generalization）</p>
+<p>Constraint</p>
+<ol>
+<li>约束哪些entity可以成为低级entity set的成员</li>
+<li>单个entity是否可以成为多个低级entity set的成员（disjoint，overlapping）</li>
+<li>完全性约束：高级entity是否一定要属于至少一个低级entity set</li>
+</ol>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9NZAiV"><img src="https://s1.ax1x.com/2023/05/05/p9NZAiV.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9NZVRU"><img src="https://s1.ax1x.com/2023/05/05/p9NZVRU.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9NeiOH"><img src="https://s1.ax1x.com/2023/05/05/p9NeiOH.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9Nemff"><img src="https://s1.ax1x.com/2023/05/05/p9Nemff.png"></a></p>
+<h2 id="Design-of-an-E-R-Database-Schema"><a href="#Design-of-an-E-R-Database-Schema" class="headerlink" title="Design of an E-R Database Schema"></a>Design of an E-R Database Schema</h2><ol>
+<li>需求分析</li>
+<li>概念设计</li>
+<li>逻辑设计</li>
+<li>物理设计</li>
+</ol>
+<p>若一个对象只对其名字及单值感兴趣，则可作为属性，如性别，若一个对象除名字外，本身还有其他属性需描述，则该对象应定义为实体集，如电话，部门。</p>
+<p>一个对象不能同时作为实体和属性。</p>
+<p>一个实体集不能与另一实体集的属性相关联，只能实体与实体相联系。</p>
+<p>要从对象的语义独立性和减少数据冗余方面考虑。</p>
+<p>specialization和generalization有助于模块化。</p>
+<p>aggregation可以将E-R图的一部分视为一个整体而不考虑内部细节。</p>
+<h2 id="Reduction-of-an-E-R-Schema-to-Tables"><a href="#Reduction-of-an-E-R-Schema-to-Tables" class="headerlink" title="Reduction of an E-R Schema to Tables"></a>Reduction of an E-R Schema to Tables</h2><p>每个entity set和relation set都对应一个table</p>
+<p>A strong entity set  -&gt;  a table with the same attributes.</p>
+<p>composite attribute需要展开，给每个部分单列一列</p>
+<p>一个entity的multivalued attribute需要单独建一个table</p>
+<p>一个weak entity set转换成表要加一个primary key来找它的identifying entity set</p>
+<p>一个relationship set转换成表列为参与的entity set的primary key和relationship自己的descriptive attribute</p>
+<p>many to many两个primary key一起作为primary key</p>
+<p>many to one，many的primary key作为primary key</p>
+<p>one to one两个均可</p>
+<p>one to many可将relationship对应的table放到many端entity set实体的表中，但如果many端是partial participation的，可能会出现NULL（one to one两端都可以）</p>
+<p>对应identifying entity set的table是redundant</p>
+<p>用table表示specialization：</p>
+<ol>
+<li>建一个高级表，下面的表包含高级的表primary key和独有的attribute</li>
+<li>建立拥有自己和上级所有属性的表</li>
+</ol>
+<h2 id="UML"><a href="#UML" class="headerlink" title="UML"></a>UML</h2><p>unified modeling language 统一建模语言</p>
+<p>UML有许多组件，可以对整个软件系统的不同方面进行图形化建模</p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9dpiQA"><img src="https://s1.ax1x.com/2023/05/07/p9dpiQA.png"></a></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://j-sycamore.github.io/2023/05/03/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag">数据库</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/05/04/anaconda%E4%BD%BF%E7%94%A8/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            anaconda使用
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/04/30/%E6%94%B6%E8%97%8F%E7%9A%84%E8%8B%8F%E8%81%94%E7%AC%91%E8%AF%9D/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">收藏的苏联笑话</div>
+      </a>
+    
+  </nav>
+
+  
+   
+  
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> J-sycamore
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="梧桐"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i></p>
+  <div class="reward-box">
+    
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>
