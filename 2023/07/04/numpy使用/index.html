@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+
+
+<html lang="ch">
+  
+
+    <head>
+      <meta charset="utf-8" />
+        
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1"
+      />
+      <title>numpy使用 |  梧桐</title>
+  <meta name="generator" content="hexo-theme-ayer">
+      
+      <link rel="shortcut icon" href="/favicon.ico" />
+       
+<link rel="stylesheet" href="/dist/main.css">
+
+      
+<link rel="stylesheet" href="/css/fonts/remixicon.css">
+
+      
+<link rel="stylesheet" href="/css/custom.css">
+ 
+      <script src="https://cdn.staticfile.org/pace/1.2.4/pace.min.js"></script>
+       
+ 
+
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-bulma@5.0.1/bulma.min.css"
+      />
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+
+      <!-- mermaid -->
+      
+      <style>
+        .swal2-styled.swal2-confirm {
+          font-size: 1.6rem;
+        }
+      </style>
+    </head>
+  </html>
+</html>
+
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-numpy使用"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  numpy使用
+</h1>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2023/07/04/numpy%E4%BD%BF%E7%94%A8/" class="article-date">
+  <time datetime="2023-07-04T07:47:05.000Z" itemprop="datePublished">2023-07-04</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
+  </div>
+  
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> Word count:</span>
+            <span class="post-count">1.1k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> Reading time≈</span>
+            <span class="post-count">5 min</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>numpy提供了ndarray的基本对象（多维数组），便于进行数值运算</p>
+<h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><p>创建：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">np.array(<span class="built_in">object</span>, dtype = <span class="literal">None</span>, copy = <span class="literal">True</span>, order = <span class="literal">None</span>, subok = <span class="literal">False</span>, ndmin = <span class="number">0</span>)</span><br><span class="line">a = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>object</td>
+<td>数组或嵌套的数列</td>
+</tr>
+<tr>
+<td>dtype</td>
+<td>数组元素的数据类型，可选</td>
+</tr>
+<tr>
+<td>copy</td>
+<td>对象是否需要复制，可选</td>
+</tr>
+<tr>
+<td>order</td>
+<td>创建数组的样式，C为行方向，F为列方向，A为任意方向（默认）</td>
+</tr>
+<tr>
+<td>subok</td>
+<td>默认返回一个与基类类型一致的数组</td>
+</tr>
+<tr>
+<td>ndmin</td>
+<td>指定生成数组的最小维度</td>
+</tr>
+</tbody></table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.arange(<span class="number">0</span>,<span class="number">1</span>,<span class="number">0.1</span>) <span class="comment"># array([0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9])</span></span><br></pre></td></tr></table></figure>
+
+<p>arange指定起始值，终值，步长来创建一维数组（数组不包括终值）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.linspace(<span class="number">0</span>,<span class="number">1</span>,<span class="number">10</span>) <span class="comment"># 步长为1/9</span></span><br></pre></td></tr></table></figure>
+
+<p>linspace指定起始值，终值，元素个数（可通过endpoint参数指定是否包括终值，缺省设置为True）</p>
+<p>其他：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">np.logspace(<span class="number">0</span>,<span class="number">2</span>,<span class="number">20</span>) <span class="comment"># 等比数列，20个元素，1-100</span></span><br><span class="line">np.r_[<span class="number">0</span>:<span class="number">2</span>:<span class="number">0.5</span>] <span class="comment"># 快速创建行向量 [0.0.5,1,1.5]</span></span><br><span class="line">np.c_[<span class="number">0</span>:<span class="number">2</span>:<span class="number">0.5</span>] <span class="comment"># 快速创建列向量 [[0],[0.5],[1],[1.5]]</span></span><br><span class="line">a = np.zeros(<span class="number">3</span>, dtype=np.<span class="built_in">float</span>) <span class="comment"># 只有一个参数默认为行向量，dtype默认值为np.float,可以不填</span></span><br><span class="line">a = np.zeros((<span class="number">2</span>, <span class="number">3</span>))</span><br><span class="line">a = np.ones(<span class="number">3</span>) <span class="comment"># 与zeros类似</span></span><br><span class="line">a = np.eyes(<span class="number">5</span>) <span class="comment"># 创建一个5*5的单位矩阵，等价于np.identity(5)</span></span><br></pre></td></tr></table></figure>
+
+<p>创建一个在 2，10，之间有 6 个元素的 ndarray，并将其形状改为(2,3)：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array = np.linspace(<span class="number">2</span>, <span class="number">10</span>, <span class="number">6</span>)</span><br><span class="line">array = array.reshape(<span class="number">2</span>, -<span class="number">1</span>)  <span class="comment"># -1为占位，numpy可以推测后面的值</span></span><br></pre></td></tr></table></figure>
+
+<p>单个矩阵操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">array = np.arange(<span class="number">2</span>, <span class="number">5</span>, <span class="number">0.5</span>, dtype=np.<span class="built_in">float</span>).reshape(<span class="number">3</span>, -<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(array)</span><br><span class="line"><span class="built_in">print</span>(<span class="number">2</span> + array)</span><br><span class="line"><span class="built_in">print</span>(array - <span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(array/<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="number">2</span>*array)</span><br><span class="line"><span class="built_in">print</span>(np.log(array))</span><br><span class="line"><span class="built_in">print</span>(np.power(array, <span class="number">2</span>))</span><br><span class="line"><span class="built_in">print</span>(np.sqrt(array))</span><br></pre></td></tr></table></figure>
+
+<p>矩阵转置：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array = np.arange(<span class="number">2</span>, <span class="number">5</span>, <span class="number">0.5</span>, dtype=np.<span class="built_in">float</span>).reshape(<span class="number">3</span>, -<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(array.T)</span><br><span class="line"><span class="built_in">print</span>(np.transpose(array)) <span class="comment"># 两种方式都可以</span></span><br></pre></td></tr></table></figure>
+
+<p>随机数据：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">np.random.rand(<span class="number">3</span>,<span class="number">2</span>) <span class="comment"># [0,1) 正态分布</span></span><br><span class="line">np.random.randn(<span class="number">2</span>,<span class="number">5</span>) <span class="comment"># 标准正态分布</span></span><br><span class="line">np.random.standard_uniform(size) <span class="comment"># size为shape，多维数组应为元组形式</span></span><br><span class="line">np.random.normal(loc,scale,size) <span class="comment"># loc为均值，scale为标准差</span></span><br><span class="line">np.random.randint(low,high,size) <span class="comment"># 随机整数，[low,high)</span></span><br><span class="line">np.random.random_integers(low,high,size) <span class="comment"># 随机整数，[low,high]</span></span><br><span class="line">np.random.random(size) <span class="comment"># 产生属于[0.0, 1.0)的size数量的连续均匀分布。size为list或者tuple时，产生相应维度的结果。</span></span><br><span class="line">np.random.random_sample(size) <span class="comment"># 同random</span></span><br><span class="line">np.random.sample(size) <span class="comment"># 同random</span></span><br></pre></td></tr></table></figure>
+
+<p>拼接：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">np.vstack(a,b) <span class="comment">#按垂直方向（行顺序）堆叠数组构成一个新的数组 堆叠的数组需要具有相同的维度</span></span><br><span class="line">np.hstack(a,b) <span class="comment">#按水平方向（列顺序）堆叠数组构成一个新的数组 堆叠的数组需要具有相同的维度</span></span><br></pre></td></tr></table></figure>
+
+<p>函数：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.atleast_2d(<span class="number">3.0</span>) <span class="comment"># 将输入视为至少两个维度的数组</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="linalg模块"><a href="#linalg模块" class="headerlink" title="linalg模块"></a>linalg模块</h1><p>创建矩阵：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A = np.mat(<span class="string">&quot;0 1 2;1 0 3;4 -3 8&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>计算逆矩阵：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">inv = np.linalg.inv(A)</span><br><span class="line"><span class="comment"># [[-4.5,7,-1.5]</span></span><br><span class="line"><span class="comment">#  [-2,4,-1]</span></span><br><span class="line"><span class="comment">#  [1.5,-2,0.5]]</span></span><br></pre></td></tr></table></figure>
+
+<p>求解线性方程组：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">B = np.mat(<span class="string">&quot;1 -2 1;0 2 -8;-4 5 9&quot;</span>)</span><br><span class="line">b = np.array([<span class="number">0</span>,<span class="number">8</span>,-<span class="number">9</span>])</span><br><span class="line">x = np.linalg.solve(B,b)</span><br><span class="line"><span class="comment"># [29,16,3]</span></span><br></pre></td></tr></table></figure>
+
+<p>求解特征值和特征向量：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">C = np.mat(<span class="string">&quot;3 -2;1 0&quot;</span>)</span><br><span class="line">c0 = np.linalg.eigvals(C)</span><br><span class="line"><span class="comment"># [2,1]</span></span><br><span class="line">c1,c2 = np.linalg.eig(C)</span><br><span class="line"><span class="comment"># c1 = [2,1]</span></span><br><span class="line"><span class="comment"># c2 = [[0.89442719 0.70710678]</span></span><br><span class="line"><span class="comment">#	    [0.4472136 0.70710678]]</span></span><br></pre></td></tr></table></figure>
+
+<p>奇异值分解：</p>
+<p>这里先讲一下奇异值分解的概念，对于一个高维矩阵A，通常情况下高维数据并非雨露均沾，集中分布在某些维度上于是，通过SVD(奇异值分解)，就可以利用降维后的数据近似地替代原始数据。所以，SVD(奇异值分解)其实就是在寻找数据分布的主要维度，将原始的高维数据映射到低维子空间中实现数据降维，A&#x3D;u*sigma*v</p>
+<p>其中sigma是对矩阵a的奇异值分解。sigma除了对角元素不为0，其他元素都为0，并且对角元素从大到小排列。sigma中有n个奇异值，一般排在后面的比较接近0，所以仅保留比较大的r个奇异值。 </p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D = np.mat(<span class="string">&quot;4 11 14;8 7 -2&quot;</span>)</span><br><span class="line">U,Sigma,V = np.linalg.svd(D,full_matrices=<span class="literal">False</span>) <span class="comment"># full_matrices = True 全SVD False 简化SVD</span></span><br></pre></td></tr></table></figure>
+
+<p>求广义逆矩阵：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">E = np.mat(<span class="string">&quot;4 11 14;8 7 -2&quot;</span>)</span><br><span class="line">pseudoinv = np.linalg.pinv(E) <span class="comment"># 注：inv函数只接受方阵作为输入矩阵，而pinv函数则没有这个限制</span></span><br></pre></td></tr></table></figure>
+
+<p>求行列式：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">F = np.mat(<span class="string">&quot;3 4;5 6&quot;</span>)</span><br><span class="line">np.linalg.det(F)</span><br></pre></td></tr></table></figure>
+
+<p>范数：</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <div class="declare">
+      <ul class="post-copyright">
+        <li>
+          <i class="ri-copyright-line"></i>
+          <strong>Copyright： </strong>
+          
+          Copyright is owned by the author. For commercial reprints, please contact the author for authorization. For non-commercial reprints, please indicate the source.
+          
+        </li>
+      </ul>
+    </div>
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://j-sycamore.github.io/2023/07/04/numpy%E4%BD%BF%E7%94%A8/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86/" rel="tag">数据处理</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag">编程</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/2023/07/06/%E8%8C%83%E6%95%B0/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            范数
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2023/07/04/5%E6%9C%88%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">5月读书笔记</div>
+      </a>
+    
+  </nav>
+
+  
+   
+  
+    
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2023
+        <i class="ri-heart-fill heart_icon"></i> J-sycamore
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>    
+    </main>
+    <div class="float_btns">
+      <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+    </div>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="梧桐"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/friends">友链</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i></p>
+  <div class="reward-box">
+    
+    
+  </div>
+</div>
+    
+<script src="/js/jquery-3.6.0.min.js"></script>
+ 
+<script src="/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+ 
+<script src="/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: ".tocbot",
+    contentSelector: ".article-entry",
+    headingSelector: "h1, h2, h3, h4, h5, h6",
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: "main",
+    positionFixedSelector: ".tocbot",
+    positionFixedClass: "is-position-fixed",
+    fixedSidebarOffset: "auto",
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.js"></script>
+<link
+  rel="stylesheet"
+  href="https://cdn.staticfile.org/jquery-modal/0.9.2/jquery.modal.min.css"
+/>
+<script src="https://cdn.staticfile.org/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/dist/main.js"></script>
+
+<!-- ImageViewer -->
+ <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.staticfile.org/photoswipe/4.1.3/default-skin/default-skin.min.css">
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe.min.js"></script>
+<script src="https://cdn.staticfile.org/photoswipe/4.1.3/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script> 
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+ 
+<link rel="stylesheet" href="/css/clipboard.css">
+ <script src="https://cdn.staticfile.org/clipboard.js/2.0.10/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+ 
+<!-- CanvasBackground -->
+
+<script>
+  if (window.mermaid) {
+    mermaid.initialize({ theme: "forest" });
+  }
+</script>
+
+
+    
+    
+
+  </div>
+</body>
+
+</html>

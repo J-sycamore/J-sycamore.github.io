@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Tag: Python |  梧桐</title>
+      <title>Tag: 机器学习 |  梧桐</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -57,7 +57,7 @@
   <article class="articles">
     
     
-    <h1 class="page-type-title">#&nbspPython</h1>
+    <h1 class="page-type-title">#&nbsp机器学习</h1>
     
     
   
@@ -75,13 +75,13 @@
       <article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
-      <a href="/2023/05/04/anaconda%E4%BD%BF%E7%94%A8/" class="archive-article-date">
-  <time datetime="2023-05-03T17:42:16.000Z" itemprop="datePublished">05/04</time>
+      <a href="/2023/07/06/%E8%8C%83%E6%95%B0/" class="archive-article-date">
+  <time datetime="2023-07-06T12:54:15.000Z" itemprop="datePublished">07/06</time>
 </a>
        
 <h2 itemprop="name">
-  <a class="archive-article-title" href="/2023/05/04/anaconda%E4%BD%BF%E7%94%A8/"
-    >anaconda使用</a> 
+  <a class="archive-article-title" href="/2023/07/06/%E8%8C%83%E6%95%B0/"
+    >范数</a> 
 </h2>
  
 
@@ -89,7 +89,7 @@
     
     
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag">编程</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
 
     
   </div>
@@ -369,51 +369,6 @@
         $icon.removeClass('ri-file-copy-2-line');
         $icon.addClass('ri-checkbox-circle-line');
         let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPIED';
-        
-        wait(function () { // 等待两秒钟后恢复
-          $icon.removeClass('ri-checkbox-circle-line');
-          $icon.addClass('ri-file-copy-2-line');
-          $span[0].innerText = 'COPY';
-        }, 2000);
-      });
-      clipboard.on('error', function(e) {
-        e.clearSelection();
-        let $btn = $(e.trigger);
-        $btn.addClass('copy-failed');
-        let $icon = $($btn.find('i'));
-        $icon.removeClass('ri-file-copy-2-line');
-        $icon.addClass('ri-time-line');
-        let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPY FAILED';
-        
-        wait(function () { // 等待两秒钟后恢复
-          $icon.removeClass('ri-time-line');
-          $icon.addClass('ri-file-copy-2-line');
-          $span[0].innerText = 'COPY';
-        }, 2000);
-      });
-    }
-    initCopyCode();
-  }(window, document);
-</script>
- 
-<!-- CanvasBackground -->
-
-<script>
-  if (window.mermaid) {
-    mermaid.initialize({ theme: "forest" });
-  }
-</script>
-
-
-    
-    
-
-  </div>
-</body>
-
-</html>span = $($btn.find('span'));
         $span[0].innerText = 'COPIED';
         
         wait(function () { // 等待两秒钟后恢复
