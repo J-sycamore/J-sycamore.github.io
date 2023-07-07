@@ -84,7 +84,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.1k</span>
+            <span class="post-count">1.5k</span>
         </span>
     </span>
 
@@ -93,7 +93,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">5 min</span>
+            <span class="post-count">6 min</span>
         </span>
     </span>
 </div>
@@ -150,6 +150,13 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.linspace(<span class="number">0</span>,<span class="number">1</span>,<span class="number">10</span>) <span class="comment"># 步长为1/9</span></span><br></pre></td></tr></table></figure>
 
 <p>linspace指定起始值，终值，元素个数（可通过endpoint参数指定是否包括终值，缺省设置为True）</p>
+<p>冒号的使用：</p>
+<ol>
+<li><p>默认全部选择</p>
+</li>
+<li><p>指定范围</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X[:,<span class="number">0</span>] <span class="comment"># 取X的所有行第0列的元素</span></span><br><span class="line">X[:,m:n] <span class="comment"># 取X的所有行中的的第m到n-1列数据</span></span><br></pre></td></tr></table></figure></li>
+</ol>
 <p>其他：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">np.logspace(<span class="number">0</span>,<span class="number">2</span>,<span class="number">20</span>) <span class="comment"># 等比数列，20个元素，1-100</span></span><br><span class="line">np.r_[<span class="number">0</span>:<span class="number">2</span>:<span class="number">0.5</span>] <span class="comment"># 快速创建行向量 [0.0.5,1,1.5]</span></span><br><span class="line">np.c_[<span class="number">0</span>:<span class="number">2</span>:<span class="number">0.5</span>] <span class="comment"># 快速创建列向量 [[0],[0.5],[1],[1.5]]</span></span><br><span class="line">a = np.zeros(<span class="number">3</span>, dtype=np.<span class="built_in">float</span>) <span class="comment"># 只有一个参数默认为行向量，dtype默认值为np.float,可以不填</span></span><br><span class="line">a = np.zeros((<span class="number">2</span>, <span class="number">3</span>))</span><br><span class="line">a = np.ones(<span class="number">3</span>) <span class="comment"># 与zeros类似</span></span><br><span class="line">a = np.eyes(<span class="number">5</span>) <span class="comment"># 创建一个5*5的单位矩阵，等价于np.identity(5)</span></span><br></pre></td></tr></table></figure>
 
@@ -169,7 +176,10 @@
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">np.vstack(a,b) <span class="comment">#按垂直方向（行顺序）堆叠数组构成一个新的数组 堆叠的数组需要具有相同的维度</span></span><br><span class="line">np.hstack(a,b) <span class="comment">#按水平方向（列顺序）堆叠数组构成一个新的数组 堆叠的数组需要具有相同的维度</span></span><br></pre></td></tr></table></figure>
 
 <p>函数：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.atleast_2d(<span class="number">3.0</span>) <span class="comment"># 将输入视为至少两个维度的数组</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">np.atleast_2d(<span class="number">3.0</span>) <span class="comment"># 将输入视为至少两个维度的数组</span></span><br><span class="line">np.<span class="built_in">sum</span>(a, axis=<span class="literal">None</span>) <span class="comment"># a为要进行求和的矩阵，axis代表轴，对于n维数组，它有n个轴，例如，对于一个4行3列2纵的三维数组，这个三维数组可以说有三个轴，0轴，1轴，2轴，若axis为一个单独的数字，就代表在以上三个轴之一选择加和，若是一个数组，则表示先进行第一个数代表的轴，再执行……</span></span><br><span class="line">np.sign(a) <span class="comment"># sign(x)=&#123; 1 (x&gt;0), 0 (x=0), -1 (x&lt;0)&#125;</span></span><br><span class="line">np.<span class="built_in">all</span>(a, axis=<span class="literal">None</span>) <span class="comment"># 判断a中所有元素是否都为true，默认考虑所有轴</span></span><br><span class="line">np.<span class="built_in">any</span>(a, axis=<span class="literal">None</span>) <span class="comment"># 判断a中是否有元素为true，同上</span></span><br><span class="line">a,s,p=np.unique(a, return_index=<span class="literal">True</span>, return_inverse=<span class="literal">True</span>) <span class="comment"># 对于一维数组或者列表，unique函数去除其中重复的元素，并按元素由大到小返回一个新的无元素重复的元组或者列表,return_index=True表示返回新列表元素在旧列表中的位置，并以列表形式储存在s中,return_inverse=True 表示返回旧列表元素在新列表中的位置，并以列表形式储存在p中</span></span><br></pre></td></tr></table></figure>
+
+<p>矩阵相乘：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.matmul(a,b)</span><br></pre></td></tr></table></figure>
 
 <h1 id="linalg模块"><a href="#linalg模块" class="headerlink" title="linalg模块"></a>linalg模块</h1><p>创建矩阵：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A = np.mat(<span class="string">&quot;0 1 2;1 0 3;4 -3 8&quot;</span>)</span><br></pre></td></tr></table></figure>
