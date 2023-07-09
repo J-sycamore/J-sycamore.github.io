@@ -41,7 +41,9 @@
           font-size: 1.6rem;
         }
       </style>
-    </head>
+    <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/custom_css_source.css">
+<!-- hexo injector head_end end --></head>
   </html>
 </html>
 
@@ -111,7 +113,7 @@
   <p>numpy提供了ndarray的基本对象（多维数组），便于进行数值运算</p>
 <h1 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h1><p>创建：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">np.array(<span class="built_in">object</span>, dtype = <span class="literal">None</span>, copy = <span class="literal">True</span>, order = <span class="literal">None</span>, subok = <span class="literal">False</span>, ndmin = <span class="number">0</span>)</span><br><span class="line">a = np.array([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</span><br></pre></td></tr></table></figure>
-
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -119,7 +121,8 @@
 <th>描述</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>object</td>
 <td>数组或嵌套的数列</td>
 </tr>
@@ -143,71 +146,56 @@
 <td>ndmin</td>
 <td>指定生成数组的最小维度</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.arange(<span class="number">0</span>,<span class="number">1</span>,<span class="number">0.1</span>) <span class="comment"># array([0,0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9])</span></span><br></pre></td></tr></table></figure>
-
 <p>arange指定起始值，终值，步长来创建一维数组（数组不包括终值）</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.linspace(<span class="number">0</span>,<span class="number">1</span>,<span class="number">10</span>) <span class="comment"># 步长为1/9</span></span><br></pre></td></tr></table></figure>
-
 <p>linspace指定起始值，终值，元素个数（可通过endpoint参数指定是否包括终值，缺省设置为True）</p>
 <p>冒号的使用：</p>
 <ol>
 <li><p>默认全部选择</p>
 </li>
 <li><p>指定范围</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X[:,<span class="number">0</span>] <span class="comment"># 取X的所有行第0列的元素</span></span><br><span class="line">X[:,m:n] <span class="comment"># 取X的所有行中的的第m到n-1列数据</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X[:,<span class="number">0</span>] <span class="comment"># 取X的所有行第0列的元素</span></span><br><span class="line">X[:,m:n] <span class="comment"># 取X的所有行中的的第m到n-1列数据</span></span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 <p>其他：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">np.logspace(<span class="number">0</span>,<span class="number">2</span>,<span class="number">20</span>) <span class="comment"># 等比数列，20个元素，1-100</span></span><br><span class="line">np.r_[<span class="number">0</span>:<span class="number">2</span>:<span class="number">0.5</span>] <span class="comment"># 快速创建行向量 [0.0.5,1,1.5]</span></span><br><span class="line">np.c_[<span class="number">0</span>:<span class="number">2</span>:<span class="number">0.5</span>] <span class="comment"># 快速创建列向量 [[0],[0.5],[1],[1.5]]</span></span><br><span class="line">a = np.zeros(<span class="number">3</span>, dtype=np.<span class="built_in">float</span>) <span class="comment"># 只有一个参数默认为行向量，dtype默认值为np.float,可以不填</span></span><br><span class="line">a = np.zeros((<span class="number">2</span>, <span class="number">3</span>))</span><br><span class="line">a = np.ones(<span class="number">3</span>) <span class="comment"># 与zeros类似</span></span><br><span class="line">a = np.eyes(<span class="number">5</span>) <span class="comment"># 创建一个5*5的单位矩阵，等价于np.identity(5)</span></span><br></pre></td></tr></table></figure>
-
 <p>创建一个在 2，10，之间有 6 个元素的 ndarray，并将其形状改为(2,3)：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array = np.linspace(<span class="number">2</span>, <span class="number">10</span>, <span class="number">6</span>)</span><br><span class="line">array = array.reshape(<span class="number">2</span>, -<span class="number">1</span>)  <span class="comment"># -1为占位，numpy可以推测后面的值</span></span><br></pre></td></tr></table></figure>
-
 <p>单个矩阵操作：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">array = np.arange(<span class="number">2</span>, <span class="number">5</span>, <span class="number">0.5</span>, dtype=np.<span class="built_in">float</span>).reshape(<span class="number">3</span>, -<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(array)</span><br><span class="line"><span class="built_in">print</span>(<span class="number">2</span> + array)</span><br><span class="line"><span class="built_in">print</span>(array - <span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(array/<span class="number">2</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="number">2</span>*array)</span><br><span class="line"><span class="built_in">print</span>(np.log(array))</span><br><span class="line"><span class="built_in">print</span>(np.power(array, <span class="number">2</span>))</span><br><span class="line"><span class="built_in">print</span>(np.sqrt(array))</span><br></pre></td></tr></table></figure>
-
 <p>矩阵转置：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array = np.arange(<span class="number">2</span>, <span class="number">5</span>, <span class="number">0.5</span>, dtype=np.<span class="built_in">float</span>).reshape(<span class="number">3</span>, -<span class="number">1</span>)</span><br><span class="line"><span class="built_in">print</span>(array.T)</span><br><span class="line"><span class="built_in">print</span>(np.transpose(array)) <span class="comment"># 两种方式都可以</span></span><br></pre></td></tr></table></figure>
-
 <p>随机数据：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">np.random.rand(<span class="number">3</span>,<span class="number">2</span>) <span class="comment"># [0,1) 正态分布</span></span><br><span class="line">np.random.randn(<span class="number">2</span>,<span class="number">5</span>) <span class="comment"># 标准正态分布</span></span><br><span class="line">np.random.standard_uniform(size) <span class="comment"># size为shape，多维数组应为元组形式</span></span><br><span class="line">np.random.normal(loc,scale,size) <span class="comment"># loc为均值，scale为标准差</span></span><br><span class="line">np.random.randint(low,high,size) <span class="comment"># 随机整数，[low,high)</span></span><br><span class="line">np.random.random_integers(low,high,size) <span class="comment"># 随机整数，[low,high]</span></span><br><span class="line">np.random.random(size) <span class="comment"># 产生属于[0.0, 1.0)的size数量的连续均匀分布。size为list或者tuple时，产生相应维度的结果。</span></span><br><span class="line">np.random.random_sample(size) <span class="comment"># 同random</span></span><br><span class="line">np.random.sample(size) <span class="comment"># 同random</span></span><br></pre></td></tr></table></figure>
-
 <p>拼接：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">np.vstack(a,b) <span class="comment">#按垂直方向（行顺序）堆叠数组构成一个新的数组 堆叠的数组需要具有相同的维度</span></span><br><span class="line">np.hstack(a,b) <span class="comment">#按水平方向（列顺序）堆叠数组构成一个新的数组 堆叠的数组需要具有相同的维度</span></span><br></pre></td></tr></table></figure>
-
 <p>函数：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">np.atleast_2d(<span class="number">3.0</span>) <span class="comment"># 将输入视为至少两个维度的数组</span></span><br><span class="line">np.<span class="built_in">sum</span>(a, axis=<span class="literal">None</span>) <span class="comment"># a为要进行求和的矩阵，axis代表轴，对于n维数组，它有n个轴，例如，对于一个4行3列2纵的三维数组，这个三维数组可以说有三个轴，0轴，1轴，2轴，若axis为一个单独的数字，就代表在以上三个轴之一选择加和，若是一个数组，则表示先进行第一个数代表的轴，再执行……</span></span><br><span class="line">np.sign(a) <span class="comment"># sign(x)=&#123; 1 (x&gt;0), 0 (x=0), -1 (x&lt;0)&#125;</span></span><br><span class="line">np.<span class="built_in">all</span>(a, axis=<span class="literal">None</span>) <span class="comment"># 判断a中所有元素是否都为true，默认考虑所有轴</span></span><br><span class="line">np.<span class="built_in">any</span>(a, axis=<span class="literal">None</span>) <span class="comment"># 判断a中是否有元素为true，同上</span></span><br><span class="line">a,s,p=np.unique(a, return_index=<span class="literal">True</span>, return_inverse=<span class="literal">True</span>) <span class="comment"># 对于一维数组或者列表，unique函数去除其中重复的元素，并按元素由大到小返回一个新的无元素重复的元组或者列表,return_index=True表示返回新列表元素在旧列表中的位置，并以列表形式储存在s中,return_inverse=True 表示返回旧列表元素在新列表中的位置，并以列表形式储存在p中</span></span><br></pre></td></tr></table></figure>
-
 <p>矩阵相乘：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.matmul(a,b)</span><br></pre></td></tr></table></figure>
-
 <h1 id="linalg模块"><a href="#linalg模块" class="headerlink" title="linalg模块"></a>linalg模块</h1><p>创建矩阵：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A = np.mat(<span class="string">&quot;0 1 2;1 0 3;4 -3 8&quot;</span>)</span><br></pre></td></tr></table></figure>
-
 <p>计算逆矩阵：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">inv = np.linalg.inv(A)</span><br><span class="line"><span class="comment"># [[-4.5,7,-1.5]</span></span><br><span class="line"><span class="comment">#  [-2,4,-1]</span></span><br><span class="line"><span class="comment">#  [1.5,-2,0.5]]</span></span><br></pre></td></tr></table></figure>
-
 <p>求解线性方程组：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">B = np.mat(<span class="string">&quot;1 -2 1;0 2 -8;-4 5 9&quot;</span>)</span><br><span class="line">b = np.array([<span class="number">0</span>,<span class="number">8</span>,-<span class="number">9</span>])</span><br><span class="line">x = np.linalg.solve(B,b)</span><br><span class="line"><span class="comment"># [29,16,3]</span></span><br></pre></td></tr></table></figure>
-
 <p>求解特征值和特征向量：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">C = np.mat(<span class="string">&quot;3 -2;1 0&quot;</span>)</span><br><span class="line">c0 = np.linalg.eigvals(C)</span><br><span class="line"><span class="comment"># [2,1]</span></span><br><span class="line">c1,c2 = np.linalg.eig(C)</span><br><span class="line"><span class="comment"># c1 = [2,1]</span></span><br><span class="line"><span class="comment"># c2 = [[0.89442719 0.70710678]</span></span><br><span class="line"><span class="comment">#	    [0.4472136 0.70710678]]</span></span><br></pre></td></tr></table></figure>
-
 <p>奇异值分解：</p>
-<p>这里先讲一下奇异值分解的概念，对于一个高维矩阵A，通常情况下高维数据并非雨露均沾，集中分布在某些维度上于是，通过SVD(奇异值分解)，就可以利用降维后的数据近似地替代原始数据。所以，SVD(奇异值分解)其实就是在寻找数据分布的主要维度，将原始的高维数据映射到低维子空间中实现数据降维，A&#x3D;u*sigma*v</p>
+<p>这里先讲一下奇异值分解的概念，对于一个高维矩阵A，通常情况下高维数据并非雨露均沾，集中分布在某些维度上于是，通过SVD(奇异值分解)，就可以利用降维后的数据近似地替代原始数据。所以，SVD(奇异值分解)其实就是在寻找数据分布的主要维度，将原始的高维数据映射到低维子空间中实现数据降维，A=u*sigma*v</p>
 <p>其中sigma是对矩阵a的奇异值分解。sigma除了对角元素不为0，其他元素都为0，并且对角元素从大到小排列。sigma中有n个奇异值，一般排在后面的比较接近0，所以仅保留比较大的r个奇异值。 </p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">D = np.mat(<span class="string">&quot;4 11 14;8 7 -2&quot;</span>)</span><br><span class="line">U,Sigma,V = np.linalg.svd(D,full_matrices=<span class="literal">False</span>) <span class="comment"># full_matrices = True 全SVD False 简化SVD</span></span><br></pre></td></tr></table></figure>
-
 <p>求广义逆矩阵：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">E = np.mat(<span class="string">&quot;4 11 14;8 7 -2&quot;</span>)</span><br><span class="line">pseudoinv = np.linalg.pinv(E) <span class="comment"># 注：inv函数只接受方阵作为输入矩阵，而pinv函数则没有这个限制</span></span><br></pre></td></tr></table></figure>
-
 <p>求行列式：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">F = np.mat(<span class="string">&quot;3 4;5 6&quot;</span>)</span><br><span class="line">np.linalg.det(F)</span><br></pre></td></tr></table></figure>
-
 <a href="/2023/07/06/%E8%8C%83%E6%95%B0/" title="范数">范数</a>：
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">np.linalg.norm(x, <span class="built_in">ord</span>=<span class="number">2</span>) <span class="comment"># ord决定范数，默认为2</span></span><br></pre></td></tr></table></figure>
-
  
       <!-- reward -->
       
@@ -551,6 +539,30 @@
     viewer_init()
 </script> 
 <!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
 
 <!-- Katex -->
 

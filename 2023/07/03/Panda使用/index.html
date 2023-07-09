@@ -41,7 +41,9 @@
           font-size: 1.6rem;
         }
       </style>
-    </head>
+    <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/custom_css_source.css">
+<!-- hexo injector head_end end --></head>
   </html>
 </html>
 
@@ -110,7 +112,7 @@
 <p>Series是一列，DataFrame是由Series集合成的多维表</p>
 <p>创建DataFrame：</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data = &#123;</span><br><span class="line">    <span class="string">&#x27;apples&#x27;</span>: [<span class="number">3</span>, <span class="number">2</span>, <span class="number">0</span>, <span class="number">1</span>], </span><br><span class="line">    <span class="string">&#x27;oranges&#x27;</span>: [<span class="number">0</span>, <span class="number">3</span>, <span class="number">7</span>, <span class="number">2</span>]</span><br><span class="line">&#125;</span><br><span class="line">purchases = pd.DataFrame(data)</span><br></pre></td></tr></table></figure>
-
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -119,7 +121,8 @@
 <th>oranges</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>0</td>
 <td>3</td>
 <td>2</td>
@@ -139,10 +142,12 @@
 <td>1</td>
 <td>2</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>此时索引为自动创建，从0开始</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">purchases = pd.DataFrame(data, index=[<span class="string">&#x27;June&#x27;</span>, <span class="string">&#x27;Robert&#x27;</span>, <span class="string">&#x27;Lily&#x27;</span>, <span class="string">&#x27;David&#x27;</span>])</span><br></pre></td></tr></table></figure>
-
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -151,7 +156,8 @@
 <th>oranges</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>June</td>
 <td>3</td>
 <td>2</td>
@@ -171,24 +177,18 @@
 <td>1</td>
 <td>2</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>此时索引为手动创建</p>
 <p>读取数据：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">data = pd.read_csv( <span class="string">&#x27;my_file.csv&#x27;</span> )</span><br><span class="line">data = pd.read_json( <span class="string">&#x27;purchases.json&#x27;</span> )</span><br><span class="line">data = pd.read_csv( my_file.csv , index_col=<span class="string">&quot;Title&quot;</span>) <span class="comment"># set Title as index</span></span><br></pre></td></tr></table></figure>
-
 <p>打印其中几行作为参考：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">data.head() <span class="comment"># print 1 - 5 columns</span></span><br><span class="line">data.head(x) <span class="comment"># print 1 - x columns</span></span><br><span class="line">data.tail() <span class="comment"># print sum-4 - sum columns</span></span><br><span class="line">data.tail(x) <span class="comment"># print sum-x+1 - sum columns</span></span><br></pre></td></tr></table></figure>
-
 <p>panda可与数据库进行连接（这里以mysql为例）：</p>
 <figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sqlalchemy <span class="keyword">import</span> create_engine</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">engine = create_engine(<span class="string">&#x27;mysql+pymysql://root:12345678@localhost:3306/testdb&#x27;</span>)</span><br><span class="line">sql_query = <span class="string">&#x27;select * from product;&#x27;</span></span><br><span class="line">df_read = pd.read_sql_query(sql_query, engine)</span><br><span class="line"><span class="built_in">print</span>(df_read)</span><br><span class="line">df_write = pd.DataFrame(&#123;<span class="string">&#x27;id&#x27;</span>: [<span class="number">10</span>, <span class="number">27</span>, <span class="number">34</span>, <span class="number">46</span>], <span class="string">&#x27;name&#x27;</span>: [<span class="string">&#x27;张三&#x27;</span>, <span class="string">&#x27;李四&#x27;</span>, <span class="string">&#x27;王五&#x27;</span>, <span class="string">&#x27;赵六&#x27;</span>], <span class="string">&#x27;score&#x27;</span>: [<span class="number">80</span>, <span class="number">75</span>, <span class="number">56</span>, <span class="number">99</span>]&#125;)</span><br><span class="line"><span class="comment"># 将df储存为MySQL中的表，不储存index列</span></span><br><span class="line">df_write.to_sql(<span class="string">&#x27;testdf&#x27;</span>, engine, index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-
 <p>写回数据：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">df.to_csv(<span class="string">&#x27;test.csv&#x27;</span>)</span><br><span class="line">df.to_json(<span class="string">&#x27;test.json&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-
-
  
       <!-- reward -->
       
@@ -532,6 +532,30 @@
     viewer_init()
 </script> 
 <!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
 
 <!-- Katex -->
 

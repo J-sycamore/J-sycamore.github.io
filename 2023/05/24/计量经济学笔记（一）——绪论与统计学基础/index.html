@@ -41,7 +41,9 @@
           font-size: 1.6rem;
         }
       </style>
-    </head>
+    <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/custom_css_source.css">
+<!-- hexo injector head_end end --></head>
   </html>
 </html>
 
@@ -84,7 +86,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">345</span>
+            <span class="post-count">335</span>
         </span>
     </span>
 
@@ -109,20 +111,20 @@
     <div class="article-entry" itemprop="articleBody">
        
   <h1 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h1><h1 id="统计学基础"><a href="#统计学基础" class="headerlink" title="统计学基础"></a>统计学基础</h1><p>基本概念略过，挑一些之前没听过的和忘了的记。</p>
-<p>$Cov(X,Y)&#x3D;E(XY)-E(X)E(Y)$</p>
+<p>$Cov(X,Y)=E(XY)-E(X)E(Y)$</p>
 <p>协方差表明了两个随机变量对结果的趋势变动是否相同</p>
 <p>抽样分布是样本统计量的分布，抽样分布不等于样本分布</p>
 <p>线性回归模型经典假设</p>
 <ol>
 <li>回归模型是正确设定的</li>
-<li>解释变量在所抽取的样本中具有变异性，且$\sum(X_i-\overline X)&#x2F;n\rightarrow Q, n\rightarrow \infty$</li>
-<li>$E(\mu_i|X)&#x3D;0,E(\mu_i)&#x3D;0,Cov(X_i,\mu_i)&#x3D;0$</li>
+<li>解释变量在所抽取的样本中具有变异性，且$\sum(X_i-\overline X)/n\rightarrow Q, n\rightarrow \infty$</li>
+<li>$E(\mu_i|X)=0,E(\mu_i)=0,Cov(X_i,\mu_i)=0$</li>
 </ol>
-<p>TSS&#x3D;ESS+RSS</p>
-<p>$R^2&#x3D;\frac{ESS}{TSS}&#x3D;1-\frac{RSS}{TSS}$</p>
+<p>TSS=ESS+RSS</p>
+<p>$R^2=\frac{ESS}{TSS}=1-\frac{RSS}{TSS}$</p>
 <p>样本交叉矩：$\frac{\sum x_i x_i^T}{n}$</p>
-<p>赤池信息准则：$AIC&#x3D;ln\frac{e’e}{n}+\frac{2(k+1)}{n}$（主要使用它）</p>
-<p>施瓦茨准则：$SC&#x3D;ln\frac{e’e}{n}+\frac{k}{n}lnn$（在大型时间序列数据中使用）</p>
+<p>赤池信息准则：$AIC=ln\frac{e’e}{n}+\frac{2(k+1)}{n}$（主要使用它）</p>
+<p>施瓦茨准则：$SC=ln\frac{e’e}{n}+\frac{k}{n}lnn$（在大型时间序列数据中使用）</p>
 <p>这两准则均要求仅当所增加的解释变量能够减少AIC值或AC值时才在原模型中增加该解释变量。</p>
 <p>t检验检验统计量是否等于某个常数</p>
 <p>F检验检验两个统计量的大小</p>
@@ -481,6 +483,30 @@
     viewer_init()
 </script> 
 <!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
 
 <!-- Katex -->
 

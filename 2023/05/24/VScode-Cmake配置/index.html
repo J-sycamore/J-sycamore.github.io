@@ -41,7 +41,9 @@
           font-size: 1.6rem;
         }
       </style>
-    </head>
+    <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/custom_css_source.css">
+<!-- hexo injector head_end end --></head>
   </html>
 </html>
 
@@ -106,8 +108,8 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>​	今天帮部门小朋友配一下VScode的环境。众所周知，ddl前干啥都比干ddl有意思，所以一边配的过程中也不满足于像一年前一样单纯无脑跟教程一键配置，打算研究一下各个部分都是干嘛的，研究的过程中就产生了这篇博客。</p>
-<p>​	先下载MinGW，最开始好几次都下载失败，查了下发现是因为网址在国外，MinGW-W64的安装exe是在线安装，所以下载寄了，解决方法是直接下载zip然后修改环境变量。</p>
+  <p>​    今天帮部门小朋友配一下VScode的环境。众所周知，ddl前干啥都比干ddl有意思，所以一边配的过程中也不满足于像一年前一样单纯无脑跟教程一键配置，打算研究一下各个部分都是干嘛的，研究的过程中就产生了这篇博客。</p>
+<p>​    先下载MinGW，最开始好几次都下载失败，查了下发现是因为网址在国外，MinGW-W64的安装exe是在线安装，所以下载寄了，解决方法是直接下载zip然后修改环境变量。</p>
  
       <!-- reward -->
       
@@ -451,6 +453,30 @@
     viewer_init()
 </script> 
 <!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
 
 <!-- Katex -->
 

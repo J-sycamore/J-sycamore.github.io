@@ -41,7 +41,9 @@
           font-size: 1.6rem;
         }
       </style>
-    </head>
+    <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/custom_css_source.css">
+<!-- hexo injector head_end end --></head>
   </html>
 </html>
 
@@ -119,7 +121,7 @@
 <p>这里我最开始有一个疑问，就是为什么fstream已经有了所有的功能，还要ofstream和ifstream。后来经过查询了解到stream的实现就是通过已经实现好的ofstream和ifstream。好吧，这很oop。但这也无法解释为什么要把ofstream和ifstream拿出来让用户调用。</p>
 <p>后来联想到数据库和已经结课的信息安全原理课上的MAC（Mandatory Access Control，详情可见以后打算写的信息安全原理课程总结，先鸽着）。我们可以将其理解为不要给用户需求之外的权限，如果一个程序只需要读，就不要给它写入的权限，不然无论是从代码维护角度还是安全管理角度都存在问题，面向对象的思想也是尽可能的解耦合。而对于既需要读又需要写的程序，用ofstream和ifstream两个来回操作未免又过于麻烦，因此才会出现这样的三种数据结构。</p>
 <h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="打开文件"><a href="#打开文件" class="headerlink" title="打开文件"></a>打开文件</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">open</span><span class="params">(<span class="type">const</span> <span class="type">char</span> *filename, ios::openmode mode)</span></span>;</span><br></pre></td></tr></table></figure>
-
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -128,7 +130,8 @@
 <th>作用</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>ios::in</td>
 <td>ifstream,fstream</td>
 <td>打开文件用于读取数据。如果文件不存在，则打开出错。</td>
@@ -163,7 +166,9 @@
 <td>ifstream,ofstream,fstream</td>
 <td>以独家方式打开文件，即锁定任何其他进程对文件的访问。</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <p>tips：</p>
 <ul>
 <li>noreplace关键词在c++23标准后才可使用。</li>
@@ -516,6 +521,30 @@
     viewer_init()
 </script> 
 <!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
 
 <!-- Katex -->
 

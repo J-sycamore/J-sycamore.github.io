@@ -41,7 +41,9 @@
           font-size: 1.6rem;
         }
       </style>
-    </head>
+    <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/custom_css_source.css">
+<!-- hexo injector head_end end --></head>
   </html>
 </html>
 
@@ -84,7 +86,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">371</span>
+            <span class="post-count">366</span>
         </span>
     </span>
 
@@ -106,9 +108,9 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>将任意向量<strong>x</strong>的$l_p-范数$定义为$||x||_p&#x3D;^p\sqrt{\sum|x_i|^p}$</p>
-<p>$p&#x3D;0,||x||_0&#x3D;^0\sqrt{x_i^0}$，表示<strong>x</strong>中非0元素的个数，在压缩感知中，我们希望最小化向量的$l_0-范数$，但这个优化模型在数学认为是一个NP-hard问题，直接求解很复杂也不可能找到解，因此，压缩感知模型是将$l_0-范数$最小化问题转换为$l_1-范数$最小化问题</p>
-<p>$p&#x3D;1,||x||_1&#x3D;\sum|x_i|$，等于向量中所有元素绝对值之和。借助现有凸优化算法（线性规划或是非线性规划），就能够找到我们想要的可行解。鉴于此，依赖于$l_1-范数$优化问题的机器学习模型如压缩感知就能够进行求解了。</p>
+  <p>将任意向量<strong>x</strong>的$l_p-范数$定义为$||x||_p=^p\sqrt{\sum|x_i|^p}$</p>
+<p>$p=0,||x||_0=^0\sqrt{x_i^0}$，表示<strong>x</strong>中非0元素的个数，在压缩感知中，我们希望最小化向量的$l_0-范数$，但这个优化模型在数学认为是一个NP-hard问题，直接求解很复杂也不可能找到解，因此，压缩感知模型是将$l_0-范数$最小化问题转换为$l_1-范数$最小化问题</p>
+<p>$p=1,||x||_1=\sum|x_i|$，等于向量中所有元素绝对值之和。借助现有凸优化算法（线性规划或是非线性规划），就能够找到我们想要的可行解。鉴于此，依赖于$l_1-范数$优化问题的机器学习模型如压缩感知就能够进行求解了。</p>
 <p>为了避免过拟合问题，一种解决方法是在 (机器学习模型的) 损失函数中加入正则项，比如用 $l_1 -范数$表示的正则项，只要使得  $l_1-范数$的数值尽可能变小，就能够让我们期望的解变成一个稀疏解 其中，“稀疏”一词可以理解为$x$中的大多数元素都是0，只有少量的元素是非0的。</p>
 <p>过拟合的核心问题是计算机记住了过多的特征，稀疏的目的是使$x$中每个特征都是有用的，相当于一个优胜劣汰的过程</p>
  
@@ -187,6 +189,15 @@
 
    
   <nav class="article-nav">
+    
+      <a href="/2023/07/09/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA-SVM/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            支持向量机(SVM)
+          
+        </div>
+      </a>
     
     
       <a href="/2023/07/04/numpy%E4%BD%BF%E7%94%A8/" class="article-nav-link">
@@ -445,6 +456,30 @@
     viewer_init()
 </script> 
 <!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
 
 <!-- Katex -->
 

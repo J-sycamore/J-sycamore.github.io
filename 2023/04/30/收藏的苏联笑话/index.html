@@ -41,7 +41,9 @@
           font-size: 1.6rem;
         }
       </style>
-    </head>
+    <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/custom_css_source.css">
+<!-- hexo injector head_end end --></head>
   </html>
 </html>
 
@@ -109,7 +111,7 @@
     <div class="article-entry" itemprop="articleBody">
        
   <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>本篇并不是合集，仅是个人觉得有意思的笑话，同时，也仅是有意思，不包含任何政治观点，全为转载，没有原创。</p>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p98ZSfJ"><img src="https://s1.ax1x.com/2023/04/30/p98ZSfJ.jpg"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p98ZSfJ"><img src="https://s1.ax1x.com/2023/04/30/p98ZSfJ.jpg" alt=""></a></p>
 <h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><ol>
 <li><p>苏联社会变化在于，在斯大林时代，当有陌生人敲门的时候，屋子里的人都停止说政治笑话而把酒拿出来，到了70年代以后，还有陌生人敲门的话，他们会开始说政治笑话而把酒藏起来</p>
 </li>
@@ -642,6 +644,30 @@
     viewer_init()
 </script> 
 <!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
 
 <!-- Katex -->
 

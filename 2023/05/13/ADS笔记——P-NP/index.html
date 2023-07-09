@@ -41,7 +41,9 @@
           font-size: 1.6rem;
         }
       </style>
-    </head>
+    <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/custom_css_source.css">
+<!-- hexo injector head_end end --></head>
   </html>
 </html>
 
@@ -110,7 +112,7 @@
        
   <h1 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h1><h2 id="不可计算问题"><a href="#不可计算问题" class="headerlink" title="不可计算问题"></a>不可计算问题</h2><p>问题本身内蕴逻辑悖论，如halting problem</p>
 <h2 id="可计算问题"><a href="#可计算问题" class="headerlink" title="可计算问题"></a>可计算问题</h2><h3 id="判定性问题"><a href="#判定性问题" class="headerlink" title="判定性问题"></a>判定性问题</h3><ul>
-<li>问题1：求出s $$\rightarrow$$ t</li>
+<li>问题1：求出s <script type="math/tex">\rightarrow</script> t </li>
 </ul>
  
       <!-- reward -->
@@ -455,6 +457,30 @@
     viewer_init()
 </script> 
 <!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
 
 <!-- Katex -->
 

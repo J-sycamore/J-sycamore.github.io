@@ -11,7 +11,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>文本打开和二进制打开文件的区别 |  梧桐</title>
+      <title>代数学习笔记（一） |  梧桐</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/favicon.ico" />
@@ -55,7 +55,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-文本打开和二进制打开文件的区别"
+  id="post-代数学习笔记（一）"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -66,7 +66,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  文本打开和二进制打开文件的区别
+  代数学习笔记（一）
 </h1>
  
 
@@ -74,8 +74,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/2023/04/29/%E6%96%87%E6%9C%AC%E6%89%93%E5%BC%80%E5%92%8C%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E7%9A%84%E5%8C%BA%E5%88%AB/" class="article-date">
-  <time datetime="2023-04-29T10:43:37.000Z" itemprop="datePublished">2023-04-29</time>
+      <a href="/2023/07/09/%E4%BB%A3%E6%95%B0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" class="article-date">
+  <time datetime="2023-07-08T18:17:30.000Z" itemprop="datePublished">2023-07-09</time>
 </a> 
   <div class="article-category">
     <a class="article-category-link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>
@@ -86,7 +86,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">495</span>
+            <span class="post-count">510</span>
         </span>
     </span>
 
@@ -102,23 +102,42 @@
  
     </div>
       
-    <div class="tocbot"></div>
-
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h1 id="文本文件和二进制文件的区别"><a href="#文本文件和二进制文件的区别" class="headerlink" title="文本文件和二进制文件的区别"></a>文本文件和二进制文件的区别</h1><p>文件的本质都是以二进制保存在磁盘上的数据，所以从物理上讲二者并无区别。</p>
-<p>文本文件保存的是用文本编辑器打开后人可以看懂的内容，二进制文件保存的是看不懂的。</p>
-<p>说白了就是二进制文件大多是图片，视频，程序，采用的是jpg，mp4，exe等编码格式，文本编辑器无法解析，文本文件则使用的是UTF-8，GBK等文本编辑器可以识别的编码格式</p>
-<h1 id="两种打开方式的区别"><a href="#两种打开方式的区别" class="headerlink" title="两种打开方式的区别"></a>两种打开方式的区别</h1><p> <strong>文本方式和二进制方式并没有本质上的区别，只是对于换行符的处理不同。</strong></p>
-<p>在 UNIX/Linux 平台中，用文本方式或二进制方式打开文件没有任何区别，因为文本文件以 \n 作为换行符号。</p>
-<p>但在 Windows 平台上，文本文件以连在一起的 \r\n 作为换行符号。如果以文本方式打开文件，当读取文件时，程序会将文件中所有的 \r\n 转换成一个字符 \n。也就是说，如果文本文件中有连续的两个字符是 \r\n，则程序会丢弃前面的 \r，只读入 \n。</p>
-<p>同样当写入文件时，程序会将 \n 转换成 \r\n 写入。也就是说，如果要写入的内容中有字符 \n，则在写入该字符前，程序会自动先写入一个 \r。</p>
-<p>因此在 Windows 平台上，如果用文本方式打开二进制文件进行读写，读写的内容就可能和文件的内容有出入。</p>
-<p>总的来说，Linux 平台使用哪种打开方式都行；Windows 平台上最好用 “ios::in | ios::out” 等打开文本文件，用 “ios::binary” 打开二进制文件。但无论哪种平台，用二进制方式打开文件总是最保险的。</p>
+  <p>当我建立了这个文件后发现我好像给自己挖了个超级大坑……不管了，能学多少是多少吧，毕竟CS人不需要搞证明，<del>感性</del>理解即可。</p>
+<p>数学大概可以分为三个阶段：</p>
+<p>第一阶段为算术，在这个阶段，我们只关注具体的数字，百分比，平方根，取幂，各种进制等等。</p>
+<p>第二阶段为初等代数，在这个阶段我们用符号代替具体数字，找到更一般的结论，更系统、更普遍的求解各种数量关系方法，高等代数本质和初等代数是一个东西，只是加深而已</p>
+<p>第三阶段为抽象代数，又名近世代数、现代环数，主要研究的是代数结构，包括群、环、域、向量空间，线性空间属于抽象代数的一类</p>
+<p>​    注：线性空间和矩阵理论并不完全等同，矩阵理论属于选定一组基的线性空间</p>
+<p>代数主要研究的是运算规则。一门代数， 其实都是从某种具体的运算体系中抽象出一些基本规则，建立一个公理体系，然后在这基础上进行研究。一个集合再加上一套运算规则，就构成一个代数结构。</p>
+<p>抽象代数对初等代数的延伸如下：</p>
+<ol>
+<li>数 -&gt; 集合</li>
+<li>+/- -&gt;二元运算<ul>
+<li>对两个元素作二元运算，得到的新元素仍然属于该集合，这叫封闭性(closure)</li>
+</ul>
+</li>
+<li>0/1 -&gt; 单位元<ul>
+<li>有些集合不存在单位元，如正整数集合没有加法单位元</li>
+<li>单位元是集合的一个特殊元素(跟二元运算有关)，满足单位元与其他元素相结合时，不改变该元素</li>
+</ul>
+</li>
+<li>负数 -&gt; 逆元素<ul>
+<li>直观地说，逆元可以撤销操作</li>
+</ul>
+</li>
+<li>结合律</li>
+<li>交换律<ul>
+<li>并不是所有二元运算都满足交换律/结合律</li>
+</ul>
+</li>
+</ol>
+<p>下面是一些知识点的目录：</p>
  
       <!-- reward -->
       
@@ -183,12 +202,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://j-sycamore.github.io/2023/04/29/%E6%96%87%E6%9C%AC%E6%89%93%E5%BC%80%E5%92%8C%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%89%93%E5%BC%80%E6%96%87%E4%BB%B6%E7%9A%84%E5%8C%BA%E5%88%AB/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://j-sycamore.github.io/2023/07/09/%E4%BB%A3%E6%95%B0%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%BC%96%E7%A8%8B/" rel="tag">编程</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
 
     </footer>
   </div>
@@ -196,19 +215,19 @@
    
   <nav class="article-nav">
     
-      <a href="/2023/04/29/%E6%94%B6%E8%97%8F%E7%9A%84%E5%8F%A5%E5%AD%90%E2%80%94%E2%80%94%E6%95%99%E8%82%B2/" class="article-nav-link">
+      <a href="/2023/07/09/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%B8%8E%E8%B5%84%E4%BA%A7%E5%AE%9A%E4%BB%B7%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            收藏的句子——教育
+            机器学习与资产定价阅读笔记
           
         </div>
       </a>
     
     
-      <a href="/2023/04/28/c-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/" class="article-nav-link">
+      <a href="/2023/07/09/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA-SVM/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">c++文件操作</div>
+        <div class="article-nav-title">支持向量机(SVM)</div>
       </a>
     
   </nav>

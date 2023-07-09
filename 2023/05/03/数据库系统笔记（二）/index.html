@@ -41,7 +41,9 @@
           font-size: 1.6rem;
         }
       </style>
-    </head>
+    <!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/custom_css_source.css">
+<!-- hexo injector head_end end --></head>
   </html>
 </html>
 
@@ -125,7 +127,7 @@
 <p>relationship set是一系列同类型的relationship</p>
 <p>attribute也可以是relationship set的一部分</p>
 <p>degree of relationship set: 参与这个relation set的entity set</p>
-<p>degree&#x3D;2 is <strong>binary</strong></p>
+<p>degree=2 is <strong>binary</strong></p>
 <p>relationship degree&gt;2 很稀少</p>
 <p>mapping cardinality：relationship set中，一个entity可以与另一类entity相联系的entity数目。其中数目是指最多一个还是多个</p>
 <h2 id="Keys"><a href="#Keys" class="headerlink" title="Keys"></a>Keys</h2><p>super key：一个或多个可以区分每个entity的attribute</p>
@@ -133,7 +135,7 @@
 <p>primary key：一个被选中的candidate key</p>
 <p>参与一个relationship set的各entity set的primary key的组合，构成该relationship set的super key</p>
 <p>选择primary key时应考虑各个candidate key的现实意义</p>
-<h2 id="E-R-Diagrams"><a href="#E-R-Diagrams" class="headerlink" title="E-R Diagrams"></a>E-R Diagrams</h2><p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9Yryt0"><img src="https://s1.ax1x.com/2023/05/03/p9Yryt0.png"></a></p>
+<h2 id="E-R-Diagrams"><a href="#E-R-Diagrams" class="headerlink" title="E-R Diagrams"></a>E-R Diagrams</h2><p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9Yryt0"><img src="https://s1.ax1x.com/2023/05/03/p9Yryt0.png" alt=""></a></p>
 <ul>
 <li>矩形为entity set</li>
 <li>菱形为relationship set</li>
@@ -141,7 +143,7 @@
 <li>带下划线为primary key</li>
 <li>线将attribute连接到entity set再连接到relationship set</li>
 </ul>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9YrB0s"><img src="https://s1.ax1x.com/2023/05/03/p9YrB0s.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9YrB0s"><img src="https://s1.ax1x.com/2023/05/03/p9YrB0s.png" alt=""></a></p>
 <p>relationship set can be recursive</p>
 <h3 id="Cardinality-Constraints"><a href="#Cardinality-Constraints" class="headerlink" title="Cardinality Constraints"></a>Cardinality Constraints</h3><p>directed line：one</p>
 <p>undirected line：many</p>
@@ -151,7 +153,7 @@
 <p>Participation：下限</p>
 <p>上下限的替代写法：min..max（*代表无穷大）</p>
 <h3 id="Non-binary-Relationship-and-binary-Relationship"><a href="#Non-binary-Relationship-and-binary-Relationship" class="headerlink" title="Non-binary Relationship and binary Relationship"></a>Non-binary Relationship and binary Relationship</h3><p>创造一个artificial entity set可以将Non-binary relationship转换为binary relationship</p>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9YIGrt"><img src="https://s1.ax1x.com/2023/05/04/p9YIGrt.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9YIGrt"><img src="https://s1.ax1x.com/2023/05/04/p9YIGrt.png" alt=""></a></p>
 <h2 id="Weak-Entity-Sets"><a href="#Weak-Entity-Sets" class="headerlink" title="Weak Entity Sets"></a>Weak Entity Sets</h2><p>定义：没有primary key的entity set，只有discriminator或partial key</p>
 <p>依赖于一个identifying entity set或owner entity set</p>
 <p>必须和一个total，one-to-many relationship set相关，相关的relationship称为identifying relationship</p>
@@ -164,10 +166,10 @@
 <li>单个entity是否可以成为多个低级entity set的成员（disjoint，overlapping）</li>
 <li>完全性约束：高级entity是否一定要属于至少一个低级entity set</li>
 </ol>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9NZAiV"><img src="https://s1.ax1x.com/2023/05/05/p9NZAiV.png"></a></p>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9NZVRU"><img src="https://s1.ax1x.com/2023/05/05/p9NZVRU.png"></a></p>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9NeiOH"><img src="https://s1.ax1x.com/2023/05/05/p9NeiOH.png"></a></p>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9Nemff"><img src="https://s1.ax1x.com/2023/05/05/p9Nemff.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9NZAiV"><img src="https://s1.ax1x.com/2023/05/05/p9NZAiV.png" alt=""></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9NZVRU"><img src="https://s1.ax1x.com/2023/05/05/p9NZVRU.png" alt=""></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9NeiOH"><img src="https://s1.ax1x.com/2023/05/05/p9NeiOH.png" alt=""></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9Nemff"><img src="https://s1.ax1x.com/2023/05/05/p9Nemff.png" alt=""></a></p>
 <h2 id="Design-of-an-E-R-Database-Schema"><a href="#Design-of-an-E-R-Database-Schema" class="headerlink" title="Design of an E-R Database Schema"></a>Design of an E-R Database Schema</h2><ol>
 <li>需求分析</li>
 <li>概念设计</li>
@@ -198,7 +200,7 @@
 </ol>
 <h2 id="UML"><a href="#UML" class="headerlink" title="UML"></a>UML</h2><p>unified modeling language 统一建模语言</p>
 <p>UML有许多组件，可以对整个软件系统的不同方面进行图形化建模</p>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9dpiQA"><img src="https://s1.ax1x.com/2023/05/07/p9dpiQA.png"></a></p>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/p9dpiQA"><img src="https://s1.ax1x.com/2023/05/07/p9dpiQA.png" alt=""></a></p>
  
       <!-- reward -->
       
@@ -542,6 +544,30 @@
     viewer_init()
 </script> 
 <!-- MathJax -->
+ <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/MathJax.js"></script>
+<script src="https://cdn.staticfile.org/mathjax/2.7.7/config/TeX-AMS-MML_HTMLorMML-full.js"></script>
+<script>
+  var ayerConfig = {
+    mathjax: true,
+  };
+</script>
 
 <!-- Katex -->
 
