@@ -86,7 +86,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">163</span>
+            <span class="post-count">186</span>
         </span>
     </span>
 
@@ -118,6 +118,8 @@
 <li><code>conda create -n xx python=x.x</code> #创建一个版本为x.x，名为xx的虚拟环境</li>
 <li><code>conda remove -n env_name --all</code> #移除环境</li>
 <li><code>conda install xxx</code> #安装名为xxx的库</li>
+<li><code>conda list</code> #查询看当前环境中安装了哪些包</li>
+<li><code>conda create --help</code> #查询帮助</li>
 </ol>
 <p>安装时注意事项：</p>
 <p>由于要使用CUDA进行加速，因此必须选择对应版本的pytorch，本机上，安装指令为<code>conda install pytorch==1.12.1 torchvision==0.13.1 torchaudio==0.12.1 cudatoolkit=11.3 -c pytorch</code>，python环境版本为3.9</p>
