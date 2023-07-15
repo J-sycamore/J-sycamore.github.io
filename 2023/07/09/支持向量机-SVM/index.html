@@ -86,7 +86,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">488</span>
+            <span class="post-count">1.3k</span>
         </span>
     </span>
 
@@ -95,7 +95,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">5 min</span>
         </span>
     </span>
 </div>
@@ -117,6 +117,24 @@
 <li>两类样本分别分隔在该超平面的两侧；</li>
 <li>两侧距离超平面最近的样本点到超平面的距离被最大化了。</li>
 </ol>
+<h2 id="对偶性"><a href="#对偶性" class="headerlink" title="对偶性"></a>对偶性</h2><h3 id="弱对偶性"><a href="#弱对偶性" class="headerlink" title="弱对偶性"></a>弱对偶性</h3><p>$minmaxf\geq maxminf$</p>
+<h3 id="强对偶性"><a href="#强对偶性" class="headerlink" title="强对偶性"></a>强对偶性</h3><p>$minmaxf=maxminf$</p>
+<p>如果f是凸优化问题，强对偶性成立</p>
+<h2 id="KKT条件"><a href="#KKT条件" class="headerlink" title="KKT条件"></a>KKT条件</h2><p>KKT条件是非线性规划最佳解的必要条件，将Lagrange乘数法所处理涉及等式的约束优化问题推广至不等式。在实际应用上，KKT条件(方程组)一般不存在代数解。</p>
+<h3 id="等式约束优化问题"><a href="#等式约束优化问题" class="headerlink" title="等式约束优化问题"></a>等式约束优化问题</h3><p>$minf(\overrightarrow{x}), s.t. g(\overrightarrow{x})=0$</p>
+<p>假设$f(x),g(x)$为连续可导函数，定义拉格朗日函数$L(\overrightarrow{x},\lambda)=f(\overrightarrow{x})+\lambda g(\overrightarrow{x})$，将原本的约束优化问题转换成等价的无约束优化问题$min_{\overrightarrow{x},\lambda}L(\overrightarrow{x},\lambda)$，求偏导，得最优解的必要条件：</p>
+<p>$\nabla_xL=\nabla f+\lambda \nabla g\space定常方程式\\\nabla_\lambda L=\nabla g\space约束条件$</p>
+<h3 id="不等式约束优化问题"><a href="#不等式约束优化问题" class="headerlink" title="不等式约束优化问题"></a>不等式约束优化问题</h3><p>$minf(\overrightarrow{x}),s.t.g(\overrightarrow{x})\leq0$</p>
+<p>设$x^*$为满足条件的最优解，分两种情况讨论</p>
+<ol>
+<li><p>$g(x^*)&lt;0$，最佳解位于可行域内部，称为内部解，此时约束条件无效，问题退化成无约束优化问题，则$\nabla f=0,\lambda=0$</p>
+</li>
+<li><p>$g(x^<em>)=0$，最佳解位于可行域边界，称为边界解，此时约束条件有效，我们可以证明驻点$x^</em>$发生于$\nabla f\in span\nabla g$，即存在$\lambda$使得$\nabla f=-\lambda\nabla g$，由于我们希望最小化f，所以此时$\nabla f$（函数在点的最陡上升方向）应该指向可行域的内部，然而$\nabla g$指向可行域的外部（即$g(x)&gt;0$的区域），因此$\lambda\geq0$，这个结论称为对偶可行性</p>
+<p>综上，$\lambda g(x)=0$恒成立，称为互补松弛性</p>
+</li>
+</ol>
+<p>综上，最佳解的必要条件包括Lagrangian函数的定常方程式、原始可行性、对偶可行性，以及互补松弛性，这些条件合称为Karush-Kuhn-Tucker (KKT)条件，在使用KKT条件时，约束条件有一定的限制，这里我们简单的将其视为仿射函数（实际上有很多，但我毕竟不是学数学的）</p>
+<p><strong>KKT条件</strong>是<strong>强对偶性</strong>的充要条件</p>
 <h1 id="支持向量机"><a href="#支持向量机" class="headerlink" title="支持向量机"></a>支持向量机</h1><h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>找出线性可分的样本在特征空间中的最大间隔超平面</p>
 <h2 id="直观操作"><a href="#直观操作" class="headerlink" title="直观操作"></a>直观操作</h2><p>我们可以先找到两个平行的，能够分离正负例的辅助超平面，然后将它们分别推向正负例两侧，使得它们之间的距离尽可能大，一直到有至少一个正样本或者负样本通过对应的辅助超平面为止——推到无法再推，再推就“过界”为止。这两个超平面互相平行，它们范围内的区域称为“<strong>间隔</strong>”，最大间隔超平面位于这两个辅助超平面正中的位置与它们平行的超平面</p>
 <p>三个超平面分别为</p>
@@ -128,6 +146,18 @@
 <h2 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h2><p>通过几何易知两个超平面距离为$\frac{2}{||x||_2}$，因此我们只需最小化$||x||_2$</p>
 <p>同时，由两个超平面的定义我们可知，我们需要满足约束$(y=1 \&amp; wx+b&gt;=1)|(y=-1 \&amp; wx+b&lt;=-1)$，化简得$y(wx+b)&gt;=1$</p>
 <p>这里为方便计算，我们选择最小化$||x||_2^2$</p>
+<p>将约束转化为$g_i(w)=1-y_i(w^Tx_i+b)\leq0$，</p>
+<p>故我们可以将最优化问题转换为$min_wmax_\lambda L(w,\lambda)$</p>
+<h2 id="SVM优化"><a href="#SVM优化" class="headerlink" title="SVM优化"></a>SVM优化</h2><p>首先构建拉格朗日函数，后利用强对偶性将问题转化，对w，b求偏导，带回函数，得到：</p>
+<p>$max_\lambda[\sum_{j=1}^n\lambda_i-\frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n\lambda_i\lambda_jy_iy_j(x_ix_j)],s.t.\sum_{i=1}^n\lambda_iy_i=0(\lambda_i\geq0)$</p>
+<p>这是个二次规划问题，我们一般用SMO（序列最小优化算法）求解，其核心思想非常简单：每次只优化一个参数，其他参数先固定住，仅求当前这个优化参数的极值，但我们的优化目标有约束条件，因此具体步骤为：</p>
+<ol>
+<li>选择两个需要更新的参数$\lambda_i$和$\lambda_j$，固定其他参数</li>
+<li>用带$\lambda_i$的表达式替换$\lambda_j$，求偏导，令导数为0</li>
+<li>多次迭代直至收敛</li>
+</ol>
+<p>由此得到$w=\sum_{i=1}^m\lambda_iy_ix_i,b=\frac{\sum_{s\in S}(y_s-wx_s)}{|S|}$</p>
+<p>构造最大分割超平面：$w^Tx+b=0$</p>
  
       <!-- reward -->
       
@@ -197,7 +227,7 @@
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%88%86%E7%B1%BB%E7%AE%97%E6%B3%95/" rel="tag">分类算法</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="tag">机器学习</a></li></ul>
 
     </footer>
   </div>
