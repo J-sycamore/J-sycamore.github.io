@@ -86,7 +86,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.3k</span>
+            <span class="post-count">1.4k</span>
         </span>
     </span>
 
@@ -137,7 +137,8 @@
 <h3 id="Context-Attention"><a href="#Context-Attention" class="headerlink" title="Context Attention"></a>Context Attention</h3><p>上下文注意力机制：考虑对于时期t的$\mathcal{P}_t\in R^{k\times m\times d}$为了不失一般性，考虑对于任意时刻$\iota \in{1,2,……,k}$，令$\mathcal{P}_\iota^l=\{\mathcal{P}_{\iota-l},…,\mathcal{P}_{\iota-1}\}\in R^{l\times m\times d}，l$为context的长度，我们使用padding当$\iota&lt;l$时，于是对于资产i，我们令$\hat{\mathcal{K_{\iota,i}^h}}=\hat{\mathcal{V_{\iota,i}^h}}=\mathcal{P_{\iota,i}^l\hat{W_h^Q}}\in R^{l\times d_f},\hat{\mathcal{Q_{\iota,i}^h}}=P_{\iota-1,i}\hat{W_h^Q}\in R^{1\times d_f}$，于是我们通过计算得到$\mathcal{Q}_{iota,i}^h=softmax(\frac{ \hat{\mathcal{Q_{\iota,i}^h}} $\hat{\mathcal{K_{\iota,i}^h}}}{\sqrt{d_f}})\hat{\mathcal{V_{\iota,i}^h}}$，将得到的k个结果合并为$\mathcal{Q}_{t,i}^h\in R^{k\times d_f}$，$\mathcal{K}_{t,i}^h\in R^{k\times d_f}$可以用同样的方式计算得出，只需要将参数换为$\hat{W_h^K}$，可以发现，当$l=1$时，上下文注意力机制等于多头注意力机制</p>
 <h2 id="Relation-attention-layer"><a href="#Relation-attention-layer" class="headerlink" title="Relation attention layer"></a>Relation attention layer</h2><p>将序列注意力层得到的结果按h个头和k个时期拆开得到$\mathcal{O}_t^{h,j}\in R^{m\times d_f}$，进行计算$\mathcal{Z}_t^{h,j}=softmax(\frac{ \mathcal{O}_t^{h,j} {\mathcal{O}_t^{h,j}}^T }{\sqrt{d_f}})\mathcal{O}_t^{h,j}$，将计算出的结果拼接，令$\mathcal{Z}_t^h=Concat\{\mathcal{Z}_t^{h,1},…,\mathcal{Z}_t^{h,j}\}\in R^{k\times m\times d_f}，\mathcal{Z}_t=Concat\{\mathcal{Z}_t^1,…,\mathcal{Z}_t^h\}\in R^{k\times m\times Hd_f}$</p>
 <h2 id="Decion-making-layer"><a href="#Decion-making-layer" class="headerlink" title="Decion-making layer"></a>Decion-making layer</h2><p>直接使用softmax层进行预测会导致对于资产的选择强制为正数，这在资产将减值时将造成重大损失，因此RAT引入了抛空，设计了三个softmax全连接层决策层，一个输出初始投资选择向量$\hat{a_t}$，一个输出抛空向量$\hat{a_t^s}$，一个输出再投资向量$\hat{a_t^r}$，最终结果为$a_t=\hat{a_t}+\hat{a_t^s}+\hat{a_t^r}$，则$a_t$范围由原来的（0，1）变为（-1，2），负数比例代表当资产降价时，投资者能够获利，资产增值时，投资者出现损失，同时，由于在现实中，交易成本也会对投资选择策略造成影响，因此，决策制定层同样考虑了$a_{t-1}$的影响</p>
-<h2 id="Learning-with-Reinforcement-Learning"><a href="#Learning-with-Reinforcement-Learning" class="headerlink" title="Learning with Reinforcement Learning"></a>Learning with Reinforcement Learning</h2><p>先摸了，毕竟看的时候看的也不细，睡醒再更</p>
+<h2 id="Learning-with-Reinforcement-Learning"><a href="#Learning-with-Reinforcement-Learning" class="headerlink" title="Learning with Reinforcement Learning"></a>Learning with Reinforcement Learning</h2><p>算自己按比例赚了多少即可</p>
+<h1 id="复现测试"><a href="#复现测试" class="headerlink" title="复现测试"></a>复现测试</h1><p>但凡有点用，也不至于一点用没有。</p>
  
       <!-- reward -->
       

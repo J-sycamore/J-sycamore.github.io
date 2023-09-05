@@ -86,7 +86,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">1.3k</span>
+            <span class="post-count">1.5k</span>
         </span>
     </span>
 
@@ -95,7 +95,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">5 min</span>
+            <span class="post-count">6 min</span>
         </span>
     </span>
 </div>
@@ -158,6 +158,13 @@
 </ol>
 <p>由此得到$w=\sum_{i=1}^m\lambda_iy_ix_i,b=\frac{\sum_{s\in S}(y_s-wx_s)}{|S|}$</p>
 <p>构造最大分割超平面：$w^Tx+b=0$</p>
+<h2 id="软间隔"><a href="#软间隔" class="headerlink" title="软间隔"></a>软间隔</h2><p>如果遇到不能完全线性可分的样本，我们引入松弛变量$\xi_i$，此时约束为$g(x)=1-y_i(w^Tx_i+b)-\xi_i\leq0$</p>
+<p>优化目标为：$min\frac{1}{2}||w||^2+C\sum_{i=1}^m\xi_i$</p>
+<p>构造拉格朗日函数：$min_{w,b,\xi}max_{\lambda,\mu}L(w,b,\xi,\lambda,\mu)=\frac{1}{2}||w||^2+C\sum_{i=1}^m\xi_i+\sum_{i=1}^n\lambda_i[1-\xi_i-y_i(w^Tx_i+b)]-\sum_{i=1}^n\mu_i\xi_i$</p>
+<p>同上步骤，得到$max_\lambda[\sum_{j=1}^n\lambda_i-\frac{1}{2}\sum_{i=1}^n\sum_{j=1}^n\lambda_i\lambda_jy_iy_j(x_ix_j)],s.t.\sum_{i=1}^n\lambda_iy_i=0(\lambda_i\geq0),C-\lambda_i-\mu_i=0$</p>
+<p>利用SMO算法求解</p>
+<p>w，b同上</p>
+<h2 id="线性不可分"><a href="#线性不可分" class="headerlink" title="线性不可分"></a>线性不可分</h2><p>对于线性完全不可分的样本，我们使用核函数映射到更高维的向量空间再求解，具体可见<a href="/2023/07/10/%E6%A0%B8%E5%87%BD%E6%95%B0/" title="核函数">核函数</a></p>
  
       <!-- reward -->
       
